@@ -4,7 +4,7 @@ import React from "react";
 // That way we don't have to define them all individually
 function DeleteBtn(props) {
   return (
-    <button type="button" class="btn btn-success">
+    <button type="button" className="btn btn-success">
       Delete
     </button>
   );
