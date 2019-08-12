@@ -16,8 +16,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Connect to the Mongo DB
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri || "mongodb://localhost/googlebooks", { useNewUrlParser: true, useCreateIndex: true });
 
+// ATLAS_URI=mongodb+srv://bookDb:bookDb@cluster0-nej0t.gcp.mongodb.net/test?retryWrites=true&w=majority
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
