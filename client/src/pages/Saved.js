@@ -28,7 +28,7 @@ class Saved extends Component {
         <div className="container border border-warning">
           <h1>Saved Books</h1>
           {this.state.books.map(books => {
-            return <BookList key={books.title} title={books.title} author={books.author} image={books.image} description={books.description} />;
+            return <BookList key={books.title} title={books.title} author={books.author} image={books.image} description={books.description} bookLink={books.link}/>;
           })}
         </div>
       </div>

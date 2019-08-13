@@ -1,6 +1,5 @@
 import React from "react";
-import ViewBtn from "../ViewBtn";
-import SaveBtn from "../SaveBtn";
+// import SaveBtn from "../SaveBtn";
 
 export function BookList(props) {
   return (
@@ -8,8 +7,9 @@ export function BookList(props) {
       <div className="row">
         <h4>{props.title}</h4>
         <hr />
-        <ViewBtn />
-        <SaveBtn />
+        <a href={props.bookLink} type="button" className="btn btn-success mx-2">View</a>
+        <button type="button" className="btn btn-success" onClick={props.handleSaveBook}>Save</button>
+        <button type="button" className="btn btn-success">Delete</button>
       </div>
       <div className="row">
         <p>{props.author}</p>
