@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import BookList from "../components/BookList";
-import axios from "axios";
+import API from "../utils/API";
 
 class Saved extends Component {
   state = {
@@ -14,15 +14,9 @@ class Saved extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("/api/books")
-      .then(response => {
-        this.setState({ books: response.data });
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    API.getSavedBook()
+      .then(res => this.setState({ books: res.data }))
+      .catch(err => console.log(err));
   }
   // Add code here to get all books from the database and save them to this.state.books
 
