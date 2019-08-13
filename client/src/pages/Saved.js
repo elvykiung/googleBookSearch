@@ -4,9 +4,6 @@ import BookList from "../components/BookList";
 import API from "../utils/API";
 
 class Saved extends Component {
-  state = {
-    books: []
-  };
 
   constructor(props) {
     super(props);
@@ -18,7 +15,18 @@ class Saved extends Component {
       .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err));
   }
-  // Add code here to get all books from the database and save them to this.state.books
+
+  loadBooks = () => {
+    API.getSavedBook()
+    .then(res => this.setState({ books: res.data }))
+    .catch(err => console.log(err));
+  };
+
+  handleDeleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -28,7 +36,7 @@ class Saved extends Component {
         <div className="container border border-warning">
           <h1>Saved Books</h1>
           {this.state.books.map(books => {
-            return <BookList key={books.title} title={books.title} author={books.author} image={books.image} description={books.description} bookLink={books.link}/>;
+            return <BookList key={books._id} title={books.title} author={books.author} image={books.image} description={books.description} bookLink={books.link} handleDeleteBook={()=>this.handleDeleteBook(books._id)}/>;
           })}
         </div>
       </div>

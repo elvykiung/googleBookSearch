@@ -9,11 +9,7 @@ class Search extends Component {
   state = {
     booksResult: [],
     bookSearch: ""
-    // author: "",
-    // description: "",
-    // image: "",
-    // link: "",
-    // title: ""
+
 
   };
 
@@ -27,7 +23,6 @@ class Search extends Component {
   searchBook = query => {
     API.getSearchBook(query)
       .then(res => this.setState({ booksResult: res.data.items }))
-      // .then(res => console.log(res.data.items))
       .catch(err => console.log(err));
   };
 
@@ -38,16 +33,7 @@ class Search extends Component {
   };
 
   handleSaveBook = (data) => {
-    // event.preventDefault();
-   console.log(data)
-    // this.setState({
-    //   author: event.target.value,
-    //   description: event.target.value,
-    //   image: event.target.value,
-    //   link: event.target.value,
-    //   title: event.target.value,
-    // });
-
+   
     API.saveBook({
       author: data.volumeInfo.title,
       description: data.volumeInfo.description,
@@ -56,7 +42,7 @@ class Search extends Component {
       title: data.volumeInfo.title,
     }).catch(err => console.log(err));
   };
-
+ 
   render() {
     return (
       <div>
