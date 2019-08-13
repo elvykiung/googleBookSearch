@@ -9,8 +9,6 @@ class Search extends Component {
   state = {
     booksResult: [],
     bookSearch: ""
-
-
   };
 
   handleInputChange = event => {
@@ -32,17 +30,16 @@ class Search extends Component {
     console.log(this.state.bookSearch);
   };
 
-  handleSaveBook = (data) => {
-   
+  handleSaveBook = data => {
     API.saveBook({
       author: data.volumeInfo.title,
       description: data.volumeInfo.description,
       image: data.volumeInfo.imageLinks.smallThumbnail,
       link: data.volumeInfo.previewLink,
-      title: data.volumeInfo.title,
+      title: data.volumeInfo.title
     }).catch(err => console.log(err));
   };
- 
+
   render() {
     return (
       <div>
@@ -51,13 +48,9 @@ class Search extends Component {
         <br />
         <div className="container border border-warning">
           <h1>Results</h1>
-          <div className="container pl-5 pb-3">
-            <div className="row">
-              {this.state.booksResult.map(books => {
-                return <BookList key={books.volumeInfo.title} title={books.volumeInfo.title} author={books.volumeInfo.authors} image={books.volumeInfo.imageLinks.smallThumbnail} description={books.volumeInfo.description} bookLink={books.volumeInfo.previewLink} handleSaveBook={()=>this.handleSaveBook(books)}/>;
-              })}
-            </div>
-          </div>
+          {this.state.booksResult.map(books => {
+            return <BookList key={books.volumeInfo.title} title={books.volumeInfo.title} author={books.volumeInfo.authors} image={books.volumeInfo.imageLinks.smallThumbnail} description={books.volumeInfo.description} bookLink={books.volumeInfo.previewLink} handleSaveBook={() => this.handleSaveBook(books)} />;
+          })}
         </div>
       </div>
     );

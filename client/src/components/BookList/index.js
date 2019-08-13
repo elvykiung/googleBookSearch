@@ -27,9 +27,9 @@ export function BookList(props) {
           <p>{props.description}</p>
         </div>
       </div>
-
+      
     </div>
-  );
+  )
 }
 
 export default BookList;
