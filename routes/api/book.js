@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const db = require("../../models/book");
 const booksController = require("../../controllers/booksController");
 
 router
@@ -8,6 +7,9 @@ router
   .post(booksController.create);
 
 // Matches with "/api/books/:id"
-router.route("/books/:id").delete(booksController.remove);
+router
+  .route("/books/:id")
+  .get(booksController.searchBook)
+  .delete(booksController.remove);
 
 module.exports = router;

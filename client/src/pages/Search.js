@@ -20,6 +20,7 @@ class Search extends Component {
 
   searchBook = query => {
     API.getSearchBook(query)
+
       .then(res => this.setState({ booksResult: res.data.items }))
       .catch(err => console.log(err));
   };

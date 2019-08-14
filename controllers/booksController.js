@@ -1,4 +1,11 @@
 const db = require("../models/book");
+const axios = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=title:";
+const FIELD = "&fields=kind,items(volumeInfo)&key=";
+const API_KEY = process.env.API_KEY;
 
 // Defining methods for the booksController
 module.exports = {
@@ -32,5 +39,9 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  searchBook: function(req, res) {
+    axios.get(BASEURL + req.params.id + FIELD + API_KEY).then(dbModel => res.json(dbModel.data));
   }
 };
