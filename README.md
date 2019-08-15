@@ -26,4 +26,4 @@ Project is created with:
 
 - Clone the repo and npm install
 - Portfolio link: https://elvykiung.github.io/
-- App Link: https://floating-tor-25814.herokuapp.com/
+- App Link: https://googlesearch1234.herokuapp.com/
